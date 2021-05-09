@@ -613,6 +613,7 @@ again to report/request seeds or ask for more information about the trees.  -->
    <choice next="#dalbeEN2"/>
  </menu>
 <menu id="infoNL" scope="dialog"  dtmf="true">
+   <prompt>
     <audio src="http://ict4d2021.saadittoh.com/group11/wavs/NL_select_type_of_tree_of_which_you_want_information.wav"/>
     <audio src="http://ict4d2021.saadittoh.com/group11/wavs/NL_press_1_for.wav"/>
     <audio src="http://ict4d2021.saadittoh.com/group11/wavs/EN_Pterocarpus_erinaceus.wav"/>
@@ -732,7 +733,7 @@ again to report/request seeds or ask for more information about the trees.  -->
   </menu>
   <menu id="menu3NL" scope="dialog" dtmf="true">
     <prompt>
-      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/NL_hope_that_info_was_useful.wav"/>   
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/NL_hope_that_info_was_useful.wav"/>
       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/NL_want_to_make_another_selection.wav"/>
       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/NL_press_1_for_yes.wav"/>
       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/NL_press_2_for_no.wav"/>
