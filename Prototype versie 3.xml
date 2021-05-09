@@ -293,7 +293,7 @@ is selected, but now that information is not yet saved, so we can not do that.--
     <prompt>
       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/NL_check_info.wav"/>
       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/NL_you_selected_the_following_type_of_tree.wav"/>
-      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/NL_Pterocarpus_erinaceus.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/EN_Pterocarpus_erinaceus.wav"/>
       <break time="1000"/>
          <audio src="http://ict4d2021.saadittoh.com/group11/wavs/NL_you_have_selected_that_your_tree_does_not_have_seeds.wav"/>
          <audio src="http://ict4d2021.saadittoh.com/group11/wavs/NL_is_this_correct.wav"/>
