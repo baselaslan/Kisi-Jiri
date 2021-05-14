@@ -841,7 +841,7 @@ know where to find the farmer. -->
     </record>
 
     <block>
-        <data namelist="messageName messageVillage user tree seeds" src="http://ict4d2021.saadittoh.com/group11/scripts/script.php" enctype="multipart/form-data" method="post"/>
+        <data namelist="messageName messageVillage user tree seeds" src="http://ict4d2021.saadittoh.com/group11/scripts/database.php" enctype="multipart/form-data" method="post"/>
     </block>
 
      <block>
@@ -884,7 +884,7 @@ know where to find the farmer. -->
     </record>
 
     <block>
-        <data namelist="messageName messageVillage user tree seeds" src="http://ict4d2021.saadittoh.com/group11/scripts/script.php" enctype="multipart/form-data" method="post"/>
+        <data namelist="messageName messageVillage user tree seeds" src="http://ict4d2021.saadittoh.com/group11/scripts/database.php" enctype="multipart/form-data" method="post"/>
     </block>
 
      <block>
