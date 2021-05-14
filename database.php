@@ -1,5 +1,11 @@
 <?php
 
+//CREDENTIALS: mysql://b78345c8d54fe5:0cc498f1@eu-cdbr-west-01.cleardb.com/heroku_2182253aee23bd0?reconnect=true
+//DB_HOST: eu-cdbr-west-01.cleardb.com
+//DB_DATABSE: heroku_2182253aee23bd0
+//DB_USERNAME: b78345c8d54fe5
+//DB_PASSWORD: 0cc498f1
+
 //get data passed from Voice Browser
 $user = $_POST['user'];
 $product = $_POST['tree'];
@@ -24,7 +30,7 @@ move_uploaded_file($wav_file_village, $village);
 
 //connect to MYSQL database
 // REPLACE WITH OUR OWN DATABASE CREDENTIALS
-$con = mysql_connect("mysql7.000webhost.com","a7049946_fsd","thepassword123");
+$con = mysql_connect("eu-cdbr-west-01.cleardb.com","b78345c8d54fe5","0cc498f1");
 if (!$con)
 {
 die('Could not connect: ' . mysql_error());
@@ -32,11 +38,11 @@ die('Could not connect: ' . mysql_error());
 
 //open the specific database
 // REPLACE WITH OUR OWN DATABASE CREDENTIALS
-mysql_select_db("a7049946_stuff", $con);
+mysql_select_db("heroku_2182253aee23bd0", $con);
 
 //insert data into the specific table - name our table KisiJiri
 // for now insert file name into database, then they can look up that file on the system
-$sql = "INSERT INTO KisiJiri(ID, user, product, quantity, price, duration, date) VALUES ('$id','$user','$tree', $seeds, $name, $village, Now())";
+$sql = "INSERT INTO KisiJiri(ID, user, tree, seeds, name, village, date) VALUES ('$id','$user','$tree', $seeds, $name, $village, Now())";
 
 //sanity check
 if (!mysql_query($sql,$con))

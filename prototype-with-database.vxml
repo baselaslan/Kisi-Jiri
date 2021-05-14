@@ -3,6 +3,7 @@
 
 <var name="lang" />
 <var name="user" />
+<assign name="user" expr="session.callerid"/>
 <var name="tree" />
 <var name="seeds" />
 
@@ -15,10 +16,12 @@
     <goto next="#menu1NL"/>
   </catch>
 
+  <!-- Assign the selected tree to the tree variable -->
   <catch event="tree_selected">
     <assign name="tree" expr="_message"/>
   </catch>
 
+  <!-- Assign whether tree has seeds or not to the seeds variable -->
   <catch event="has_seeds">
     <assign name="seeds" expr="_message"/>
   </catch>
