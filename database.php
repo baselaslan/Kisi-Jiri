@@ -25,8 +25,6 @@ $wav_file_village = $_FILES["messageVillage"]["tmp_name"];
 $name = $id.'_name.wav';
 $village = $id.'_village.wav';
 
-$data = 'user: ' . $user . ' tree: ' . $tree . ' seeds: ' . $seeds . ' name: ' . $name . ' village: ' . $village;
-file_put_contents('transferred_data.txt', $data);
 
 //save to files
 move_uploaded_file($wav_file_name, $name);
