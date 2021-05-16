@@ -21,7 +21,7 @@ Basel Aslan, Maggie Mackenzie-Cardy, Seline Olijdam and Lieke Venneker
 ## Tech/framework used
 Built with
 - [Voxeo](https://evolution.voxeo.com/) 
-- ADD DATABASE
+- [Heroku](https://heroku.com)
 
 ## Code Example
 *Show what the library does as concisely as possible, developers should be able to figure out how your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.*
@@ -102,3 +102,24 @@ question of what tree the caller would like to report. If not we continue with t
 know where to find the farmer.
 
 **Goodbye** :  Thank you for calling Kisi Jiri. Have a nice day!
+
+## Information Storage
+
+### Here we will give an overview of the database structure and what values are stored
+
+For our project we are using a MySQL database hosted by Heroku. 
+
+Below we give details of the information stored in the database which is collected during the call
+
+| Name       | Type         | Extra information           | Description                                                                                                      |
+|------------|--------------|-----------------------------|------------------------------------------------------------------------------------------------------------------|
+| ID         | INT          | AUTO_INCREMENT, PRIMARY KEY | Automatically generated key                                                                                      |
+| user       | BIGINT(255)  | NOT NULL                    | Phone number of the caller                                                                                       |
+| tree       | VARCHAR(255) | NOT NULL                    | Selected tree                                                                                                    |
+| seeds      | VARCHAR(255) | NOT NULL                    | Whether the tree has seeds or not                                                                                |
+| name       | VARCHAR(255) | NOT NULL                    | Name of audio file that has the recording of the caller's name. This is in the format $user$time_name.wav       |
+| village    | VARCHAR(255) | NOT NULL                    | Name of audio file that has the recording of the caller's village. This is in the format $user$time_village.wav |
+| created_at | TIMESTAMP    | DEFAULT CURRENT_TIMESTAMP   | Date of entry creation                                                                             
+
+
+For the audio files, we save the files themselves onto the server hosting the database.php code and we enter just the name of those files in the database. Volunteers will later manually go through these entries and can replace name and village with the transcribed audio file.
