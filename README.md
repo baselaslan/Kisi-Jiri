@@ -107,7 +107,7 @@ know where to find the farmer.
 
 ### Here we will give an overview of the database structure and what values are stored
 
-For our project we are using a MySQL database hosted by Heroku. 
+For our project we are using a MySQL database hosted by Heroku. In the file database.php you can find the credentials for this database and example code on how to connect and view the rows in the database, as well as how we collect the values from our VoiceXML application and store them.
 
 Below we give details of the information stored in the database which is collected during the call
 
