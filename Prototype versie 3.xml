@@ -2,6 +2,10 @@
 <vxml version = "2.1" >
 
 <var name="lang" />
+  <catch event="Arabic">
+    <assign name="lang" expr="'Arabic'"/>
+    <goto next="#menu1AR"/>
+  </catch>
   <catch event="English">
     <assign name="lang" expr="'English'"/>
     <goto next="#menu1EN"/>
@@ -23,15 +27,28 @@
 <!-- Here the caller can select the language -->
   <menu id="language" dtmf="true">
     <prompt>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_select_2_for_AR.wav"/>
       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/EN_select_3_for_EN.wav"/>
       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/NL_select_4_for_NL.wav"/>
     </prompt>
-  <!--  <choice event="French" />
-    <choice event="Arabic" /> -->
+  <!--  <choice event="French" /> -->
+    <choice event="Arabic" />
     <choice event="English" />
     <choice event="Dutch" />
   </menu>
-
+  
+    <menu id="menu1AR" dtmf="true">
+<!-- In this menu the caller can choose what they want to do: report a tree, get information, or request seeds. -->
+     <prompt>
+<audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_select_what_you_want_to_do.wav"/>
+<audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_choose_1_to_report_tree.wav"/>
+<audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_choose_2_to_get_info_about_tree.wav"/>
+<audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_choose_3_to_request_seeds.wav"/>
+      </prompt>
+     <choice next="#reportAR"/>
+     <choice next="#infoAR"/>
+     <choice next="#requestAR"/>
+  </menu>
 
   <menu id="menu1EN" dtmf="true">
 <!-- In this menu the caller can choose what they want to do: report a tree, get information, or request seeds. -->
@@ -57,8 +74,34 @@
      <choice next="#infoNL"/>
      <choice next="#requestNL"/>
   </menu>
+  
+  
 
-
+   <menu id="reportAR" dtmf="true">
+<!-- Start of reporting a tree. This is where the farmers can choose which tree they have -->
+<!-- Audio files are used to make sure the pronunciation of the trees sounds better
+and breaks are added to create a more natural conversation. Error handling is not done in this
+prototype, because the errors that occur are already solved by voxeo and it made it more
+complicated to add more code that was not necassary. -->
+     <prompt>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_select_type_of_tree_to_report.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Pterocarpus_erinaceus.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Terminalia_habeensis.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_3_for.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Afzelia_Africana.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_4_for.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Khaya_senegalensis.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_5_for.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Dalbergia_melanoxylon.wav"/>
+      </prompt>
+     <choice next="#pteroAR"/>
+     <choice next="#termiAR"/>
+     <choice next="#afzeAR"/>
+     <choice next="#khayaAR"/>
+     <choice next="#dalbeAR"/>
+  </menu>
 
    <menu id="reportEN" dtmf="true">
 <!-- Start of reporting a tree. This is where the farmers can choose which tree they have -->
@@ -113,6 +156,19 @@ complicated to add more code that was not necassary. -->
 
 
 <!-- The next 5 menus are for the 5 different trees, this is where we ask whether the selected tree has seeds or not-->
+   <menu id="pteroAR" dtmf="true">
+   <prompt>
+  	<audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_selected_the_following_type_of_tree.wav"/>
+  	<audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Pterocarpus_erinaceus.wav"/>
+  	<break time="1000"/>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_does_this_tree_have_seeds.wav"/>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for_yes.wav"/>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for_no.wav"/>
+   </prompt>
+   <choice next="#seedsARpter"/>
+   <choice next="#noseedsARpter"/>
+ </menu>
+  
  <menu id="pteroEN" dtmf="true">
    <prompt>
   	<audio src="http://ict4d2021.saadittoh.com/group11/wavs/EN_you_selected_the_following_type_of_tree.wav"/>
@@ -136,6 +192,19 @@ complicated to add more code that was not necassary. -->
    </prompt>
    <choice next="#seedsNLpter"/>
    <choice next="#noseedsNLpter"/>
+ </menu>
+  
+  <menu id="termiAR" dtmf="true">
+   <prompt>
+  	<audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_selected_the_following_type_of_tree.wav"/>
+  	<audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Terminalia_habeensis.wav"/>
+  	<break time="1000"/>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_does_this_tree_have_seeds.wav"/>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for_yes.wav"/>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for_no.wav"/>
+   </prompt>
+   <choice next="#seedsARtermi"/>
+   <choice next="#noseedsARtermi"/>
  </menu>
 
  <menu id="termiEN" dtmf="true">
@@ -162,6 +231,19 @@ complicated to add more code that was not necassary. -->
    <choice next="#seedsNLtermi"/>
    <choice next="#noseedsNLtermi"/>
  </menu>
+  
+  <menu id="afzeAR" dtmf="true">
+   <prompt>
+  	<audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_selected_the_following_type_of_tree.wav"/>
+  	<audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Afzelia_Africana.wav"/>
+  	<break time="1000"/>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_does_this_tree_have_seeds.wav"/>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for_yes.wav"/>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for_no.wav"/>
+   </prompt>
+   <choice next="#seedsARafze"/>
+   <choice next="#noseedsARafze"/>
+ </menu>
 
  <menu id="afzeEN" dtmf="true">
    <prompt>
@@ -187,6 +269,19 @@ complicated to add more code that was not necassary. -->
    <choice next="#seedsNLafze"/>
    <choice next="#noseedsNLafze"/>
  </menu>
+  
+   <menu id="khayaAR" dtmf="true">
+   <prompt>
+  	<audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_selected_the_following_type_of_tree.wav"/>
+  	<audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Khaya_senegalensis.wav"/>
+  	<break time="1000"/>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_does_this_tree_have_seeds.wav"/>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for_yes.wav"/>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for_no.wav"/>
+   </prompt>
+   <choice next="#seedsARkhaya"/>
+   <choice next="#noseedsARkhaya"/>
+ </menu>
 
   <menu id="khayaEN" dtmf="true">
    <prompt>
@@ -211,6 +306,19 @@ complicated to add more code that was not necassary. -->
    </prompt>
    <choice next="#seedsNLkhaya"/>
    <choice next="#noseedsNLkhaya"/>
+ </menu>
+  
+   <menu id="dalbeAR" dtmf="true">
+   <prompt>
+  	<audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_selected_the_following_type_of_tree.wav"/>
+  	<audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Dalbergia_melanoxylon.wav"/>
+  	<break time="1000"/>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_does_this_tree_have_seeds.wav"/>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for_yes.wav"/>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for_no.wav"/>
+   </prompt>
+   <choice next="#seedsARdalbe"/>
+   <choice next="#noseedsARdalbe"/>
  </menu>
 
  <menu id="dalbeEN" dtmf="true">
@@ -246,6 +354,22 @@ complicated to add more code that was not necassary. -->
 is selected, but now that information is not yet saved, so we can not do that.-->
 
 <!-- Pterocarpus erinaceus -->
+  
+   <menu id="seedsARpter" scope="dialog" dtmf="true">
+    <prompt>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_check_info.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_selected_the_following_type_of_tree.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Pterocarpus_erinaceus.wav"/>
+      <break time="1000"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_have_selected_that_your_tree_has_seeds.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_is_this_correct.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for_yes.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for_no.wav"/>
+    </prompt>
+    <choice next="#menu2AR"/>
+    <choice next="#wrongInfoAR"/>
+  </menu>
+  
  <menu id="seedsENpter" scope="dialog" dtmf="true">
     <prompt>
       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/EN_check_info.wav"/>
@@ -274,7 +398,22 @@ is selected, but now that information is not yet saved, so we can not do that.--
     <choice next="#menu2NL"/>
     <choice next="#wrongInfoNL"/>
   </menu>
-
+  
+ <menu id="noseedsARpter" scope="dialog" dtmf="true">
+    <prompt>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_check_info.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_selected_the_following_type_of_tree.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Pterocarpus_erinaceus.wav"/>
+      <break time="1000"/>
+         <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_have_selected_that_your_tree_does_not_have_seeds.wav"/>
+         <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_is_this_correct.wav"/>
+         <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for_yes.wav"/>
+         <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for_no.wav"/>
+    </prompt>
+    <choice next="#menu2AR"/>
+    <choice next="#wrongInfoAR"/>
+  </menu>
+  
  <menu id="noseedsENpter" scope="dialog" dtmf="true">
     <prompt>
       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/EN_check_info.wav"/>
@@ -307,6 +446,21 @@ is selected, but now that information is not yet saved, so we can not do that.--
 
 
 <!--Terminalia habeensis -->
+   <menu id="seedsARtermi" scope="dialog" dtmf="true">
+     <prompt>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_check_info.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_selected_the_following_type_of_tree.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Terminalia_habeensis.wav"/>
+       <break time="1000"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_have_selected_that_your_tree_has_seeds.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_is_this_correct.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for_yes.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for_no.wav"/>
+     </prompt>
+     <choice next="#menu2AR"/>
+     <choice next="#wrongInfoAR"/>
+   </menu>
+  
   <menu id="seedsENtermi" scope="dialog" dtmf="true">
      <prompt>
        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/EN_check_info.wav"/>
@@ -334,6 +488,21 @@ is selected, but now that information is not yet saved, so we can not do that.--
      </prompt>
      <choice next="#menu2NL"/>
      <choice next="#wrongInfoNL"/>
+   </menu>
+  
+  <menu id="noseedsARtermi" scope="dialog" dtmf="true">
+     <prompt>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_check_info.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_selected_the_following_type_of_tree.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Terminalia_habeensis.wav"/>
+       <break time="1000"/>
+          <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_have_selected_that_your_tree_does_not_have_seeds.wav"/>
+          <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_is_this_correct.wav"/>
+          <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for_yes.wav"/>
+          <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for_no.wav"/>
+     </prompt>
+     <choice next="#menu2AR"/>
+     <choice next="#wrongInfoAR"/>
    </menu>
 
   <menu id="noseedsENtermi" scope="dialog" dtmf="true">
@@ -368,6 +537,21 @@ is selected, but now that information is not yet saved, so we can not do that.--
 
 
 <!-- Afzelia Africana -->
+  <menu id="seedsARafze" scope="dialog" dtmf="true">
+    <prompt>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_check_info.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_selected_the_following_type_of_tree.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Afzelia_Africana.wav"/>
+      <break time="1000"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_have_selected_that_your_tree_has_seeds.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_is_this_correct.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for_yes.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for_no.wav"/>
+        </prompt>
+    <choice next="#menu2AR"/>
+    <choice next="#wrongInfoAR"/>
+  </menu>
+  
   <menu id="seedsENafze" scope="dialog" dtmf="true">
     <prompt>
       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/EN_check_info.wav"/>
@@ -395,6 +579,21 @@ is selected, but now that information is not yet saved, so we can not do that.--
     </prompt>
     <choice next="#menu2NL"/>
     <choice next="#wrongInfoNL"/>
+  </menu>
+  
+  <menu id="noseedsARafze" scope="dialog" dtmf="true">
+    <prompt>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_check_info.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_selected_the_following_type_of_tree.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Afzelia_Africana.wav"/>
+      <break time="1000"/>
+         <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_have_selected_that_your_tree_does_not_have_seeds.wav"/>
+         <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_is_this_correct.wav"/>
+         <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for_yes.wav"/>
+         <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for_no.wav"/>
+    </prompt>
+    <choice next="#menu2AR"/>
+    <choice next="#wrongInfoAR"/>
   </menu>
 
   <menu id="noseedsENafze" scope="dialog" dtmf="true">
@@ -428,6 +627,21 @@ is selected, but now that information is not yet saved, so we can not do that.--
 
 
 <!--  Khaya senegalensis -->
+  <menu id="seedsARkhaya" scope="dialog" dtmf="true">
+     <prompt>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_check_info.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_selected_the_following_type_of_tree.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Khaya_senegalensis.wav"/>
+       <break time="1000"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_have_selected_that_your_tree_has_seeds.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_is_this_correct.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for_yes.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for_no.wav"/>
+     </prompt>
+     <choice next="#menu2AR"/>
+     <choice next="#wrongInfoAR"/>
+   </menu>
+  
   <menu id="seedsENkhaya" scope="dialog" dtmf="true">
      <prompt>
        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/EN_check_info.wav"/>
@@ -455,6 +669,21 @@ is selected, but now that information is not yet saved, so we can not do that.--
      </prompt>
      <choice next="#menu2NL"/>
      <choice next="#wrongInfoNL"/>
+   </menu>
+  
+  <menu id="noseedsARkhaya" scope="dialog" dtmf="true">
+     <prompt>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_check_info.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_selected_the_following_type_of_tree.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Khaya_senegalensis.wav"/>
+       <break time="1000"/>
+          <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_have_selected_that_your_tree_does_not_have_seeds.wav"/>
+          <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_is_this_correct.wav"/>
+          <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for_yes.wav"/>
+          <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for_no.wav"/>
+     </prompt>
+     <choice next="#menu2AR"/>
+     <choice next="#wrongInfoAR"/>
    </menu>
 
   <menu id="noseedsENkhaya" scope="dialog" dtmf="true">
@@ -489,6 +718,21 @@ is selected, but now that information is not yet saved, so we can not do that.--
 
 
 <!-- Dalbergia melanoxylon  -->
+  <menu id="seedsARdalbe"  scope="dialog" dtmf="true">
+    <prompt>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_check_info.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_selected_the_following_type_of_tree.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Dalbergia_melanoxylon.wav"/>
+      <break time="1000"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_have_selected_that_your_tree_has_seeds.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_is_this_correct.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for_yes.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for_no.wav"/>
+    </prompt>
+    <choice next="#menu2AR"/>
+    <choice next="#wrongInfoAR"/>
+  </menu>
+  
  <menu id="seedsENdalbe"  scope="dialog" dtmf="true">
     <prompt>
       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/EN_check_info.wav"/>
@@ -516,6 +760,21 @@ is selected, but now that information is not yet saved, so we can not do that.--
     </prompt>
     <choice next="#menu2NL"/>
     <choice next="#wrongInfoNL"/>
+  </menu>
+  
+  <menu id="noseedsARdalbe" scope="dialog" dtmf="true">
+    <prompt>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_check_info.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_selected_the_following_type_of_tree.wav"/>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Dalbergia_melanoxylon.wav"/>
+      <break time="1000"/>
+         <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_you_have_selected_that_your_tree_does_not_have_seeds.wav"/>
+         <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_is_this_correct.wav"/>
+         <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for_yes.wav"/>
+         <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for_no.wav"/>
+    </prompt>
+    <choice next="#menu2AR"/>
+    <choice next="#wrongInfoAR"/>
   </menu>
 
  <menu id="noseedsENdalbe" scope="dialog" dtmf="true">
@@ -546,6 +805,15 @@ is selected, but now that information is not yet saved, so we can not do that.--
     <choice next="#menu2NL"/>
     <choice next="#wrongInfoNL"/>
   </menu>
+  
+  <form id="wrongInfoAR">
+  <block>
+   <prompt>
+     <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_lets_try_again.wav"/>
+   </prompt>
+  </block>
+  <goto next="#menu1AR"/>
+ </form>
 
 <form id="wrongInfoEN">
   <block>
@@ -569,6 +837,16 @@ is selected, but now that information is not yet saved, so we can not do that.--
 
 <!--Here we ask if there is another tree to report, if so the process starts from the
 question what tree the caller would like to report. If not we continue with the next part-->
+  <menu id="menu2AR" scope="dialog" dtmf="true">
+  <prompt>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_would_you_like_to_report_another_tree.wav"/>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for_yes.wav"/>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for_no.wav"/>
+  </prompt>
+  <choice next="#reportAR"/>
+  <choice next="#farmernameAR"/>
+</menu>
+  
 <menu id="menu2EN" scope="dialog" dtmf="true">
   <prompt>
         <audio src="http://ict4d2021.saadittoh.com/group11/wavs/EN_would_you_like_to_report_another_tree.wav"/>
@@ -592,6 +870,27 @@ question what tree the caller would like to report. If not we continue with the 
 about. After that they are redirected to a form that explains the information
 per tree. At the end they can choose to go back to menu1 where they can choose
 again to report/request seeds or ask for more information about the trees.  -->
+  <menu id="infoAR" scope="dialog" dtmf="true">
+   <prompt>
+     <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_select_type_of_tree_of_which_you_want_seeds.wav"/>
+     <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for.wav"/>
+     <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Pterocarpus_erinaceus.wav"/>
+     <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for.wav"/>
+     <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Terminalia_habeensis.wav"/>
+     <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_3_for.wav"/>
+     <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Afzelia_Africana.wav"/>
+     <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_4_for.wav"/>
+     <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Khaya_senegalensis.wav"/>
+     <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_5_for.wav"/>
+     <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Dalbergia_melanoxylon.wav"/>
+   </prompt>
+   <choice next="#pteroAR2"/>
+   <choice next="#termiAR2"/>
+   <choice next="#afzeAR2"/>
+   <choice next="#khayaAR2"/>
+   <choice next="#dalbeAR2"/>
+ </menu>
+  
 <menu id="infoEN" scope="dialog" dtmf="true">
    <prompt>
      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/EN_select_type_of_tree_of_which_you_want_seeds.wav"/>
@@ -632,6 +931,15 @@ again to report/request seeds or ask for more information about the trees.  -->
    <choice next="#khayaNL2"/>
    <choice next="#dalbeNL2"/>
  </menu>
+  
+  <form id="pteroAR2">
+   <block>
+    <prompt>
+         <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_info_Pterocarpus_erinaceus.wav"/>
+    </prompt>
+   </block>
+   <goto next="#menu3AR"/>
+  </form>
 
  <form id="pteroEN2">
    <block>
@@ -649,6 +957,15 @@ again to report/request seeds or ask for more information about the trees.  -->
     </block>
     <goto next="#menu3NL"/>
    </form>
+  
+  <form id="termiAR2">
+   <block>
+    <prompt>
+         <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_info_Terminalia_habeensis.wav"/>
+    </prompt>
+   </block>
+   <goto next="#menu3AR"/>
+  </form>
 
  <form id="termiEN2">
    <block>
@@ -666,6 +983,15 @@ again to report/request seeds or ask for more information about the trees.  -->
     </block>
     <goto next="#menu3NL"/>
    </form>
+  
+  <form id="afzeAR2">
+     <block>
+      <prompt>
+           <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_info_Afzelia_Africana.wav"/>
+      </prompt>
+     </block>
+     <goto next="#menu3AR"/>
+    </form>
 
    <form id="afzeEN2">
      <block>
@@ -682,6 +1008,15 @@ again to report/request seeds or ask for more information about the trees.  -->
        </prompt>
       </block>
       <goto next="#menu3NL"/>
+    </form>
+  
+   <form id="khayaAR2">
+     <block>
+      <prompt>
+           <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_info_Khaya_senegalensis.wav"/>
+      </prompt>
+     </block>
+     <goto next="#menu3AR"/>
     </form>
 
    <form id="khayaEN2">
@@ -700,6 +1035,15 @@ again to report/request seeds or ask for more information about the trees.  -->
       </block>
       <goto next="#menu3NL"/>
    </form>
+  
+   <form id="dalbeAR2">
+     <block>
+      <prompt>
+           <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_info_Dalbergia_melanoxylon.wav"/>
+      </prompt>
+     </block>
+     <goto next="#menu3AR"/>
+    </form>
 
    <form id="dalbeEN2">
      <block>
@@ -721,6 +1065,17 @@ again to report/request seeds or ask for more information about the trees.  -->
     <!--Here we ask whether the caller wants information about another tree or
      request or report a tree, if so the process starts from the
     question what the caller would like to do. If not we go to the goodbye form-->
+  <menu id="menu3AR" scope="dialog" dtmf="true">
+    <prompt>
+          <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_hope_that_info_was_useful.wav"/>
+          <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_want_to_make_another_selection.wav"/>
+          <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for_yes.wav"/>
+          <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for_no.wav"/>
+    </prompt>
+    <choice next="#menu1AR"/>
+    <choice next="#goodbyeAR"/>
+  </menu>
+  
   <menu id="menu3EN" scope="dialog" dtmf="true">
     <prompt>
           <audio src="http://ict4d2021.saadittoh.com/group11/wavs/EN_hope_that_info_was_useful.wav"/>
@@ -742,7 +1097,29 @@ again to report/request seeds or ask for more information about the trees.  -->
     <choice next="#goodbyeNL"/>
   </menu>
 
-
+<menu id="requestAR" dtmf="true">
+<!-- Through this menu the caller can request seeds of any type of tree. -->
+     <prompt>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_select_type_of_tree_of_which_you_want_seeds.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_1_for.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Pterocarpus_erinaceus.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_2_for.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Terminalia_habeensis.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_3_for.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Afzelia_Africana.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_4_for.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Khaya_senegalensis.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_5_for.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_Dalbergia_melanoxylon.wav"/>
+       <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_press_6_if_youd_like_any_type_of_tree.wav"/>
+      </prompt>
+     <choice next="#farmernameAR"/>
+     <choice next="#farmernameAR"/>
+     <choice next="#farmernameAR"/>
+     <choice next="#farmernameAR"/>
+     <choice next="#farmernameAR"/>
+     <choice next="#farmernameAR"/>
+  </menu>
 
 <menu id="requestEN" dtmf="true">
 <!-- Through this menu the caller can request seeds of any type of tree. -->
@@ -795,6 +1172,49 @@ again to report/request seeds or ask for more information about the trees.  -->
 
 <!-- We now ask for the farmers information, to ensure that the people of TreeAid
 know where to find the farmer. -->
+  <form id="farmernameAR">
+    <block>
+     <prompt>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_please_say_your_name.wav"/>
+     </prompt>
+    </block>
+    <property name="inputmodes" value="dtmf"/>
+    <property name="interdigittimeout" value="2s"/>
+    <property name="timeout" value="4s"/>
+
+    <record name="messageName" beep="true" maxtime="5s" dtmfterm="true">
+    <noinput>
+     <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_I_didnt_hear_anything_please_repeat.wav"/>
+    </noinput>
+    </record>
+
+    <block>
+     <prompt>
+      <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_please_say_the_name_of_the_village_where_you_live.wav"/>
+     </prompt>
+    </block>
+    <property name="inputmodes" value="dtmf"/>
+    <property name="interdigittimeout" value="2s"/>
+    <property name="timeout" value="4s"/>
+
+    <record name="messageVillage" beep="true" maxtime="10s" dtmfterm="true">
+    <noinput>
+     <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_I_didnt_hear_anything_please_repeat.wav"/>
+    </noinput>
+    </record>
+
+    <block>
+        <data namelist="messageName messageVillage" src="http://ict4d2021.saadittoh.com/group11/scripts/script.php" enctype="multipart/form-data" method="post"/>
+    </block>
+
+     <block>
+       <prompt>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_thank_you_for_your_help.wav"/>
+       </prompt>
+      <goto next="#goodbyeAR"/>
+     </block>
+</form>
+  
 <form id="farmernameEN">
     <block>
      <prompt>
@@ -880,6 +1300,14 @@ know where to find the farmer. -->
       <goto next="#goodbyeNL"/>
      </block>
     </form>
+  
+  <form id="goodbyeAR">
+  <block>
+   <prompt>
+        <audio src="http://ict4d2021.saadittoh.com/group11/wavs/AR_thank_you_for_calling_kisi_jiri.wav"/>
+   </prompt>
+  </block>
+ </form>
 
 <form id="goodbyeEN">
   <block>
