@@ -1,32 +1,26 @@
 # Kisi Jiri - save tree
-*A little info about your project and/ or overview that explains what the project is about.*
 
-kijk hier voor info over [treeAid](https://www.treeaid.org/about/our-approach/)
+[Tree Aid](https://www.treeaid.org/about/our-approach/) is a non-governmental organization (NGO) that reduces poverty and protects the environment in Africa, while working together with local communities. In Mali, Tree Aid wants to address the issue of the potential extinction of five types of trees due to a lack of awareness that people should not cut these trees down, especially before they have produced seeds. The NGO wants to increase locals’ knowledge through a radio program, by explaining the importance of regreening and preserving these trees. A voice-based application, Kisi Jiri, which supports local languages will be used to make this initiative possible. A voice application has the benefit that illiterate people can also use the application, and telephony is already a widely adopted technology in Mali. After hearing the message from Tree Aid on the radio, people can call if they have an endangered tree on their land. Tree Aid will aggregate the information gathered by the voice-based application to be able to track the location of the callers,  for example to be able to collect the seeds from the endangered trees to mitigate the extinction. Callers will also be able to request information about the description of trees or request seeds to plant on their land. This initiative can help to restore and protect biodiversity in Mali. The title that we have chosen for this project is “Kisi Jiri” which means “save tree” in Bambara, one of the most spoken languages in Mali.
 
-Tree Aid wants to address the issue of potential extinction of certain trees due to lack of awareness that farmers should not cut these trees down, especially before they have produced seeds. The NGO wants to increase farmers' knowledge through a radio program, by explaining the importance of regreening and preserving these trees. A voice-based application supporting local languages will be used to support this initiative. After hearing the message on the radio, farmers can call if they have an endangered tree on their land. TreeAid will aggregate the information gathered by the voice based application to be able to track the location of the endangered trees and collect seeds to mitigate the extinction. Farmers will also be able to request information about the description of trees or request seeds to plant on their land. The success of this initiative will  help to restore and protect biodiversity in Mali. The title that we have chosen for this project is “Kisi Jiri” which means save tree in Bambara, one of the languages spoken in Mali.
+**The creators of this project are:** Basel Aslan, Maggie Mackenzie-Cardy, Seline Olijdam and Lieke Venneker
 
-Basel Aslan, Maggie Mackenzie-Cardy, Seline Olijdam and Lieke Venneker
-
-## Motivation
-*A short description of the motivation behind the creation and maintenance of the project. This should explain why the project exists.*
-
-## Code style
-*If you're using any code style like xo, standard etc. That will help others while contributing to your project. Ex. -*
-
-## Screenshots
-*Include logo/demo screenshot etc.*
-
+## Project logo
 <img src="https://github.com/seline1511/Kisi-Jiri/blob/main/logo.png" alt="Kisi Jiri logo" width="300">
 
-## Tech/framework used
+## Technology used
 Built with
-- [Voxeo](https://evolution.voxeo.com/) 
-- [Heroku](https://heroku.com)
+- [Voxeo](https://evolution.voxeo.com/) - used for hosting the voice XML code that runs the appliciation.
+- [Heroku](https://heroku.com)  - database that stores all the necessary information that is given by the users. 
+
+## Framework
+The complete process of the voice application can be seen in the flowchart below. 
+<img src="https://github.com/seline1511/Kisi-Jiri/blob/main/flowchart of the system.jpeg" alt="Kisi Jiri logo" width="900">
+
 
 ## Code Example
 *Show what the library does as concisely as possible, developers should be able to figure out how your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.*
 
-Below an example of a menu that we use is shown. This menu has the id 'menu1EN', this name was chosen because it is the first of the main menus and it is the english menu. dtmf is set to true because voxeo should recognise the dual tone. Then we need a prompt for the output of this menu. In this case the output consists of multiple audio files. These files will be played in the respective order and based of the recognised tone, the next menu is chosen. This can be seen right below the closing tag of the prompt. The choice next is used to select a next menu to go to. So in this case, when the user choses 1, they go to reportEN. For 2 they go to infoEN and for 3 to requestEN, for every other number they hear an error message in english that they did not chose a valid number. After that the whole menu is played again until they choose a valid number. These menus are used for every part in the system where a choice needs to be made. When no choice is needed and only information is given to the user we used a form, which is also shown below. 
+Below an example of a menu that we use is shown. This menu has the id 'menu1EN', this name was chosen because it is the first of the main menus and it is the english menu. Dtmf is set to true because voxeo should recognise the dual tone. Then we need a prompt for the output of this menu. In this case the output consists of multiple audio files. These files will be played in the respective order and based of the recognised tone, the next menu is chosen. This can be seen right below the closing tag of the prompt. The choice next is used to select a next menu to go to. So in this case, when the user choses 1, they go to reportEN. For 2 they go to infoEN and for 3 to requestEN, for every other number they hear an error message in english that they did not chose a valid number. After that the whole menu is played again until they choose a valid number. These menus are used for every part in the system where a choice needs to be made. When no choice is needed and only information is given to the user we used a form, which is also shown below. 
 
 ```XML
 <menu id="menu1EN" dtmf="true">
@@ -56,11 +50,10 @@ In this form we repeat the information that the user gave us. Which in this case
 </form>
 ```
 
-## Installation
-*Provide step by step series of examples and explanations about how to get a development env running.*
+## Installation & How to use
+Create an account at [Voxeo](https://evolution.voxeo.com/). Go to Files, Logs, & Reports. Then you can go to the www folder and at the bottom of that page there is an option to add a new file. Create a new file and go to the application manager and choose add application. Here you write down the name of the application and select voice phone calls. Then a new menu opens below named, voice application type. Here you have to seelect the following things: Development, Europe, VoiceXML, Nuance, EU-Prophecy VoiceXML. The next menu is voice URL, here you can click on file manager and select the file that you just created. Now click "Create Application" and your application is created. Then a new tab opens named, contact methods. There you can click on international number. This redirects you to a page that shows phone numbers per country and their pin. This is the number you need to call and the pin you need to use when the application asks for it. After the pincode your application should start. It should do nothing right now, becasue your file is still empty. You can use our code as an example and call again.
 
-## How to use?
-*If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.*
+
 
 ## Code structure
 
