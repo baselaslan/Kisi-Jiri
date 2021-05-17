@@ -564,10 +564,7 @@ complicated to add more code that was not necassary. -->
  </menu>
 
 
-<!-- Here the answer about seeds or no seeds is repeated -->
-<!-- For the next model we also want to include the name of the tree that
-is selected, but now that information is not yet saved, so we can not do that.-->
-
+<!-- Here the name of the tree that is selected and the answer about seeds or no seeds is repeated.-->
 <!-- Pterocarpus erinaceus -->
 <form id="saveSeedsFRpter">
    <block>
@@ -1378,7 +1375,8 @@ is selected, but now that information is not yet saved, so we can not do that.--
   </menu>
 
 
-<!-- This form will be played if the caller has selected that the information is not correct -->
+<!-- This form will be played if the caller has selected that the information is not correct.
+The caller will be redirected to menu 1. -->
 <form id="wrongInfoFR">
   <block>
    <prompt>
@@ -1702,7 +1700,7 @@ again to report/request seeds or ask for more information about the trees.  -->
 
     <!--Here we ask whether the caller wants information about another tree or
      request or report a tree, if so the process starts from the
-    question what the caller would like to do. If not we go to the goodbye form-->
+    question what the caller would like to do. If not they go to the goodbye form-->
   <menu id="menu3FR" scope="dialog" dtmf="true">
     <prompt>
           <audio src="http://ict4d2021.saadittoh.com/group11/wavs/FR_hope_that_info_was_useful_plus_want_to_make_another_selection.wav"/>
