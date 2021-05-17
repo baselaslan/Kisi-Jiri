@@ -1,11 +1,12 @@
+
+## Project logo
+<img src="https://github.com/seline1511/Kisi-Jiri/blob/main/logo.png" alt="Kisi Jiri logo" width="300">
+
 # Kisi Jiri - save tree
 
 [Tree Aid](https://www.treeaid.org/about/our-approach/) is a non-governmental organization (NGO) that reduces poverty and protects the environment in Africa, while working together with local communities. In Mali, Tree Aid wants to address the issue of the potential extinction of five types of trees due to a lack of awareness that people should not cut these trees down, especially before they have produced seeds. The NGO wants to increase locals’ knowledge through a radio program, by explaining the importance of regreening and preserving these trees. A voice-based application, Kisi Jiri, which supports local languages will be used to make this initiative possible. A voice application has the benefit that illiterate people can also use the application, and telephony is already a widely adopted technology in Mali. After hearing the message from Tree Aid on the radio, people can call if they have an endangered tree on their land. Tree Aid will aggregate the information gathered by the voice-based application to be able to track the location of the callers,  for example to be able to collect the seeds from the endangered trees to mitigate the extinction. Callers will also be able to request information about the description of trees or request seeds to plant on their land. This initiative can help to restore and protect biodiversity in Mali. The title that we have chosen for this project is “Kisi Jiri” which means “save tree” in Bambara, one of the most spoken languages in Mali.
 
 **The creators of this project are:** Basel Aslan, Maggie Mackenzie-Cardy, Seline Olijdam and Lieke Venneker
-
-## Project logo
-<img src="https://github.com/seline1511/Kisi-Jiri/blob/main/logo.png" alt="Kisi Jiri logo" width="300">
 
 ## Technology used
 Built with
@@ -58,41 +59,47 @@ Create an account at [Voxeo](https://evolution.voxeo.com/). Go to Files, Logs, &
 
 ## Code structure
 
-### Here we will give a short overview of all the menus and forms that we use together with a short explanation of what it does.
+#### Here we will give a short overview of all the menus and forms that we use together with a short explanation of what it does.
 
-**Language**: Here the caller can select the language
+**Language**: Here the caller can select the language. This is either French, Arabic, English or Dutch.
 
-**Menu1** : In this menu, the caller can choose what they want to do: report a tree, get information, or request seeds.
+**Menu1** : In this menu, the caller can choose what they want to do: report a tree, get information about a tree, or request seeds.
 
 ---------------------------------------------------------------------------------------
 #### The first option is to report a tree
 
-**Report tree** : Start of reporting a tree. This is where the farmers can choose which tree they have
+**Report** : Start of reporting a tree. This is where the caller can choose which tree they have found.
 
 **Seeds or no seeds** : The next 5 menus are for the 5 different trees, this is where we ask whether the selected tree has seeds or not.
 
-**Seeds** : Here the answer about seeds or no seeds is repeated
+**Seeds & noseeds** : Here the name of the tree that is selected and the answer about seeds or no seeds is repeated.
 
-**noseeds** :  Here the answer about seeds or no seeds is repeated
+**WrongInfo** : This form will be played if the caller has selected that the information is not correct. The caller will be redirected to menu 1.
 
 **Menu2** : Here we ask if there is another tree to report, if so the process starts from the
-question of what tree the caller would like to report. If not we continue with the next part
+question of what tree the caller would like to report. If not we continue with the next part.
 
 --------------------------------------------------------------------------------------------
 #### The second option is to get information about the trees
 
-**Info about trees** :  Through this menu, the caller can request seeds of any type of tree.
+**Info about trees** :  In this menu the caller can select a tree of which they want more information
+about. After that they are redirected to a form that explains the information
+per tree. At the end they can choose to go back to menu1 where they can choose
+again to report/request seeds or ask for more information about the trees.
 
+**Menu3** : Here we ask whether the caller wants information about another tree or 
+request or report a tree, if so the process starts from the question what the caller
+would like to do. If not they go to the goodbye form.
 
 --------------------------------------------------------------------------------------------
 #### The last option is to request seeds of the trees yourself
 
-**Request seeds**  : Through this menu, the caller can request seeds of any type of tree
+**Request seeds**  : Through this menu, the caller can request seeds of any type of tree.
 
 --------------------------------------------------------------------------------------------
 #### These last menus are both used for reporting and requesting. For getting information only the last menu is used.
 
-**Farmer name** :  We now ask for the farmers' information, to ensure that the people of TreeAid
+**Farmer name** :  We now ask for the farmers' information, to ensure that the people of Tree Aid
 know where to find the farmer.
 
 **Goodbye** :  Thank you for calling Kisi Jiri. Have a nice day!
