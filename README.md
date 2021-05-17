@@ -53,7 +53,8 @@ In this form we repeat the information that the user gave us. Which in this case
 ## Installation & How to use
 Create an account at [Voxeo](https://evolution.voxeo.com/). Go to Files, Logs, & Reports. Then you can go to the www folder and at the bottom of that page there is an option to add a new file. Create a new file and go to the application manager and choose add application. Here you write down the name of the application and select voice phone calls. Then a new menu opens below named, voice application type. Here you have to seelect the following things: Development, Europe, VoiceXML, Nuance, EU-Prophecy VoiceXML. The next menu is voice URL, here you can click on file manager and select the file that you just created. Now click "Create Application" and your application is created. Then a new tab opens named, contact methods. There you can click on international number. This redirects you to a page that shows phone numbers per country and their pin. This is the number you need to call and the pin you need to use when the application asks for it. After the pincode your application should start. It should do nothing right now, becasue your file is still empty. You can use our code as an example and call again.
 
-
+*The phone number of our application is:*  +31 20 8082848
+*The pin is:* 9990098378
 
 ## Code structure
 
